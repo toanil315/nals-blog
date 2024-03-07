@@ -8,7 +8,7 @@ const HomeContainer = () => {
     page: 1,
     limit: 10,
     sortBy: 'id',
-    order: 'asc',
+    order: 'desc',
     search: '',
   });
 

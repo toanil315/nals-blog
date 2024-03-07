@@ -1,7 +1,7 @@
-import React from 'react';
+import { type ElementType } from 'react';
 
 interface NonAuthRouteProps {
-  element: any;
+  element: ElementType;
 }
 
 const NonAuthRoute = ({ element: Component }: NonAuthRouteProps) => {

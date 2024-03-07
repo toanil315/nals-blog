@@ -1,5 +1,4 @@
-import { Blog } from '@/interfaces';
-import React from 'react';
+import type { Blog } from '@/interfaces';
 import BlogItem from './BlogItem';
 
 interface Props {

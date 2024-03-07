@@ -5,16 +5,12 @@ module.exports = {
     },
     "extends": [
         "plugin:react/recommended",
-        "xo",
-        'eslint:recommended',
         "plugin:@typescript-eslint/recommended",
-
         "plugin:prettier/recommended"
     ],
     "overrides": [
         {
             "extends": [
-                "xo-typescript",
                 "plugin:prettier/recommended"  // don't forget this scope
             ],
             "files": [
@@ -22,6 +18,9 @@ module.exports = {
                 "*.tsx"
             ],
             rules: {
+              "react/prop-types": "off",
+              "@typescript-eslint/no-non-null-assertion": "off",
+              '@typescript-eslint/no-explicit-any': 'off',
               '@typescript-eslint/consistent-type-definitions': 'off',
               '@typescript-eslint/naming-convention': 'off',
               '@typescript-eslint/no-confusing-void-expression': 'off',

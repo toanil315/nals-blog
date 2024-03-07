@@ -1,9 +1,11 @@
+import { type ElementType } from 'react';
+
 interface AuthRouteProps {
-  element: any;
+  element: ElementType;
   roles?: string[];
 }
 
-function AuthRoute({ element: Component, roles }: AuthRouteProps) {
+function AuthRoute({ element: Component }: AuthRouteProps) {
   return <Component />;
 }
 

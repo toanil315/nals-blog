@@ -50,7 +50,7 @@ const BlogForm = ({ form, type, onSubmit, isSubmitting }: Props) => {
       <div className={`user-ctrl flex justify-center mt-4 ${isSubmitting ? 'cursor-wait' : ''}`}>
         <Button
           className={`px-5 py-2 ${isSubmitting ? 'pointer-events-none opacity-60' : ''}`}
-          color='primary'
+          color='success'
         >
           {t('form.blog.publish')}
         </Button>

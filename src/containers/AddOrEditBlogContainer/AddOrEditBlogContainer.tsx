@@ -11,6 +11,9 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { BaseBlog, Blog } from '@/interfaces';
+import { useModal } from '@/hooks';
+import SuccessModal from './components/SuccessModalModal';
+import FailModal from './components/FailModal';
 
 interface Props {
   type: ACTION_ENUM;
@@ -22,6 +25,9 @@ const AddOrEditBlogContainer = ({ type, blogId }: Props) => {
   const [getBlogById, { data }] = useLazyGetBlogByIdQuery();
   const [createBlogMutation, { isLoading: createBlogLoading }] = useCreateBlogMutation();
   const [updateBlogMutation, { isLoading: updateBlogLoading }] = useUpdateBlogMutation();
+  const [idModalNavigateTo, setIdModalNavigateTo] = React.useState('');
+  const successModal = useModal();
+  const failModal = useModal();
 
   const form = useForm<BaseBlog>({
     defaultValues: {
@@ -55,16 +61,23 @@ const AddOrEditBlogContainer = ({ type, blogId }: Props) => {
     }
   }, [data, type]);
 
+  const showSuccessModal = (blogId: string) => {
+    setIdModalNavigateTo(blogId);
+    successModal.toggle();
+  };
+
   const createBlog = (data: BaseBlog) => {
     createBlogMutation(data)
       .unwrap()
-      .then((res) => console.log(res));
+      .then((res) => showSuccessModal(res.id))
+      .catch(() => failModal.toggle());
   };
 
   const updateBlog = (data: Blog) => {
     updateBlogMutation(data)
       .unwrap()
-      .then((res) => console.log(res));
+      .then((res) => showSuccessModal(res.id))
+      .catch(() => failModal.toggle());
   };
 
   const handleSubmitForm = (data: BaseBlog | Blog) => {
@@ -85,6 +98,16 @@ const AddOrEditBlogContainer = ({ type, blogId }: Props) => {
           isSubmitting={type === ACTION_ENUM.CREATE ? createBlogLoading : updateBlogLoading}
         />
       </FormProvider>
+      <SuccessModal
+        isOpen={successModal.isOpen}
+        toggle={successModal.toggle}
+        blogId={idModalNavigateTo}
+        type={type}
+      />
+      <FailModal
+        isOpen={failModal.isOpen}
+        toggle={failModal.toggle}
+      />
     </div>
   );
 };

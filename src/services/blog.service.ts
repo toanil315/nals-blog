@@ -35,7 +35,7 @@ export const BlogService = createApi({
         return response.json();
       },
     }),
-    createBlog: builder.mutation<any, BaseBlog>({
+    createBlog: builder.mutation<Blog, BaseBlog>({
       query: (body) => ({
         url: BASE_END_POINT,
         method: 'POST',
@@ -49,7 +49,7 @@ export const BlogService = createApi({
         return response.json();
       },
     }),
-    updateBlog: builder.mutation<any, Blog>({
+    updateBlog: builder.mutation<Blog, Blog>({
       query: ({ id, ...body }) => ({
         url: `${BASE_END_POINT}/${id}`,
         method: 'PUT',

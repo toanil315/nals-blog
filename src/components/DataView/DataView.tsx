@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { type ReactElement } from 'react';
 import DefaultErrorHolder from '../DefaultErrorHolder/DefaultErrorHolder';
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const DataView = ({ isLoading, isError, Skeleton, ErrorPlaceHolder, View }: Props) => {
-  if (isError) return ErrorPlaceHolder || <DefaultErrorHolder />;
+  if (isError) return ErrorPlaceHolder ?? <DefaultErrorHolder />;
   if (isLoading) return Skeleton;
   return View;
 };

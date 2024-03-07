@@ -20,10 +20,15 @@
       "bodyPlaceholder": "Enter body",
       "image": "Banner Image",
       "imagePlaceholder": "Enter blog banner",
-      "publish": "Publish"
+      "publish": "Publish",
+      "createSuccess": "Blog is created successfully.",
+      "updateSuccess": "Blog is updated successfully.",
+      "fail": "Something went wrong, please try again!"
     },
     "validation": {
       "required": "This field is required!"
     }
-  }
+  },
+  "viewBlogNow": "View Blog Now",
+  "close": "Close"
 }
