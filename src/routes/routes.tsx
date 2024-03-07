@@ -25,7 +25,7 @@ const routeList: RouteObject[] = [
         element: <NonAuthRoute element={BlogDetail} />,
       },
       {
-        path: ROUTES.EDIT_BLOG,
+        path: ROUTES.EDIT_BLOG(),
         element: <NonAuthRoute element={EditBlog} />,
       },
       {

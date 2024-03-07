@@ -45,6 +45,9 @@ export const BlogService = createApi({
         if (error) return [];
         return [{ type: 'BLOG' }];
       },
+      transformResponse: (response: any) => {
+        return response.json();
+      },
     }),
     updateBlog: builder.mutation<any, Blog>({
       query: ({ id, ...body }) => ({
@@ -55,6 +58,9 @@ export const BlogService = createApi({
       invalidatesTags: (_, error, arg) => {
         if (error) return [];
         return [{ type: 'BLOG' }, { type: 'BLOG', id: arg.id }];
+      },
+      transformResponse: (response: any) => {
+        return response.json();
       },
     }),
   }),

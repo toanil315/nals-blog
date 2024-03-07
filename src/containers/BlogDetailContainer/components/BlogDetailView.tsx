@@ -12,8 +12,15 @@ const BlogDetailView = ({ blog }: Props) => {
 
   const { t } = useTranslation();
 
+  let blogContent = '';
+  if (typeof blog.body === 'string') {
+    blogContent = blog.body;
+  } else {
+    blogContent = blog.content;
+  }
+
   return (
-    <div className='max-w-4xl mx-auto my-0 py-4 '>
+    <div className='max-w-4xl mx-2 md:!mx-auto my-0 py-4'>
       <div className='h-72 bg-gray-400 rounded-t-lg'>
         <img
           className='h-full w-full object-cover rounded-t-lg'
@@ -40,8 +47,12 @@ const BlogDetailView = ({ blog }: Props) => {
             </span>
           </div>
         </div>
-        <h1 className='pt-6 pb-2 text-4xl font-semibold mb-6'>{blog.title}</h1>
-        <div className='blog-content text-gray-500 leading-5'>{Parser().parse(blog.body)}</div>
+        <h1 className='pt-6 pb-2 text-xl md:text-2xl lg:text-4xl font-semibold mb-6'>
+          {blog.title}
+        </h1>
+        <div className='blog-content text-gray-500 leading-5 text-sm md:text-base'>
+          {Parser().parse(blogContent)}
+        </div>
       </div>
     </div>
   );

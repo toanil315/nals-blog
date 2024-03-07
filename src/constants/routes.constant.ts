@@ -15,7 +15,7 @@ export const ROUTES = {
 
   CREATE_BLOG: `${prefixPath}/blogs/create`,
 
-  get EDIT_BLOG() {
-    return `${this.BLOG_DETAIL}/edit`;
+  EDIT_BLOG(id?: string) {
+    return id ? `${this.BLOG_DETAIL.replace(':blogId', id)}/edit` : `${this.BLOG_DETAIL}/edit`;
   },
 };

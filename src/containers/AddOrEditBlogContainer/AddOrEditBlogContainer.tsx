@@ -1,12 +1,16 @@
 import { ACTION_ENUM } from '@/constants';
-import { useCreateBlogMutation, useLazyGetBlogByIdQuery } from '@/services/blog.service';
+import {
+  useCreateBlogMutation,
+  useLazyGetBlogByIdQuery,
+  useUpdateBlogMutation,
+} from '@/services/blog.service';
 import React, { useEffect } from 'react';
 import BlogForm from './components/BlogForm';
 import { useTranslation } from 'react-i18next';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { BaseBlog } from '@/interfaces';
+import { BaseBlog, Blog } from '@/interfaces';
 
 interface Props {
   type: ACTION_ENUM;
@@ -15,8 +19,9 @@ interface Props {
 
 const AddOrEditBlogContainer = ({ type, blogId }: Props) => {
   const { t } = useTranslation();
-  const [getBlogById, { data, isLoading, isError }] = useLazyGetBlogByIdQuery();
+  const [getBlogById, { data }] = useLazyGetBlogByIdQuery();
   const [createBlogMutation, { isLoading: createBlogLoading }] = useCreateBlogMutation();
+  const [updateBlogMutation, { isLoading: updateBlogLoading }] = useUpdateBlogMutation();
 
   const form = useForm<BaseBlog>({
     defaultValues: {
@@ -41,23 +46,32 @@ const AddOrEditBlogContainer = ({ type, blogId }: Props) => {
     }
   }, [type, blogId]);
 
+  useEffect(() => {
+    if (type === ACTION_ENUM.UPDATE && data) {
+      form.reset({
+        ...data,
+        body: typeof data.body === 'string' ? data.body : data.content,
+      });
+    }
+  }, [data, type]);
+
   const createBlog = (data: BaseBlog) => {
-    console.log(form.formState.errors);
     createBlogMutation(data)
       .unwrap()
       .then((res) => console.log(res));
   };
 
-  const updateBlog = (data: BaseBlog) => {
-    console.log(form.formState.errors);
-    console.log('update: ', data);
+  const updateBlog = (data: Blog) => {
+    updateBlogMutation(data)
+      .unwrap()
+      .then((res) => console.log(res));
   };
 
-  const handleSubmitForm = (data: BaseBlog) => {
+  const handleSubmitForm = (data: BaseBlog | Blog) => {
     if (type === ACTION_ENUM.CREATE) {
       createBlog(data);
     } else {
-      updateBlog(data);
+      updateBlog(data as Blog);
     }
   };
 
@@ -68,6 +82,7 @@ const AddOrEditBlogContainer = ({ type, blogId }: Props) => {
           form={form}
           type={type}
           onSubmit={handleSubmitForm}
+          isSubmitting={type === ACTION_ENUM.CREATE ? createBlogLoading : updateBlogLoading}
         />
       </FormProvider>
     </div>

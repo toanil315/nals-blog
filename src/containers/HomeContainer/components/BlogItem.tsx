@@ -1,3 +1,5 @@
+import { EditIcon } from '@/components';
+import { ROUTES } from '@/constants';
 import { Blog } from '@/interfaces';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -8,18 +10,18 @@ interface Props {
 
 export default function BlogItem({ blog }: Props) {
   return (
-    <div className='group cursor-pointer overflow-hidden rounded-lg w-full flex flex-col md:flex-row gap-4 p-4 shadow-green-100 shadow-md bg-white border border-gray-200'>
+    <div className='cursor-pointer overflow-hidden rounded-lg w-full flex flex-col md:flex-row gap-4 p-4 shadow-green-100 shadow-md bg-white border border-gray-200 relative'>
       <Link to={`/blogs/${blog.id}`}>
         <div className='h-[200px] md:h-56 md:w-60 overflow-hidden rounded-lg flex-shrink-0 bg-gray-400'>
           <img
             loading='lazy'
-            className='w-full h-full object-cover transition duration-200 ease-in-out group-hover:scale-105 rounded-lg'
+            className='w-full h-full object-cover transition duration-200 ease-in-out hover:scale-105 rounded-lg'
             src={blog.image}
             alt={blog.image}
           />
         </div>
       </Link>
-      <div className='px-2 py-4 flex flex-col justify-between gap-4'>
+      <div className='px-2 py-4 md:!py-0 flex flex-col justify-between gap-4'>
         <div className='blog-overview'>
           <Link to={`/blogs/${blog.id}`}>
             <h3 className='text-2xl font-semibold hover:text-green-500 transition-all duration-200 ease-in-out '>
@@ -27,7 +29,7 @@ export default function BlogItem({ blog }: Props) {
             </h3>
           </Link>
           <div className='flex items-center justify-between'>
-            <p className='line-clamp-3'>{blog.content}</p>
+            <p className='line-clamp-3 lg:w-4/5'>{blog.content}</p>
           </div>
         </div>
         <p className='flex items-center gap-2'>
@@ -46,6 +48,14 @@ export default function BlogItem({ blog }: Props) {
           </a>
         </p>
       </div>
+      <Link to={ROUTES.EDIT_BLOG(blog.id)}>
+        <div className='absolute top-2 right-1 md:right-2 bg-white p-2 rounded-full shadow-lg border border-gray-200'>
+          <EditIcon
+            width={30}
+            height={30}
+          />
+        </div>
+      </Link>
     </div>
   );
 }
