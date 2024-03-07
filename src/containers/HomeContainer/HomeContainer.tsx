@@ -13,17 +13,17 @@ const HomeContainer = () => {
   });
 
   return (
-    <div className='bg-gray-50 '>
+    <>
       <Banner />
       <div className='p-4'>
         <DataView
           isLoading={isLoading}
           isError={isError}
           Skeleton={<BlogListSkeleton />}
-          View={<BlogList blogs={data || []} />}
+          View={<BlogList blogs={Array.isArray(data) ? data : []} />}
         />
       </div>
-    </div>
+    </>
   );
 };
 

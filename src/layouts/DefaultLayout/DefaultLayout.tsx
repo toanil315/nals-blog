@@ -1,16 +1,15 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { DefaultLayoutContainer } from './styles';
 import { Header } from '@/components';
 
 const DefaultLayout = () => {
   return (
-    <DefaultLayoutContainer>
+    <main className='min-h-screen flex flex-col'>
       <Header />
-      <main>
+      <section className='bg-gray-50 flex-shrink-0 flex-1'>
         <Outlet />
-      </main>
-    </DefaultLayoutContainer>
+      </section>
+    </main>
   );
 };
 

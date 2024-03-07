@@ -7,6 +7,8 @@ import { NonAuthRoute } from '@/hocs';
 
 const Home = loadable(() => import('@/pages/Home'));
 const BlogDetail = loadable(() => import('@/pages/BlogDetail'));
+const CreateBlog = loadable(() => import('@/pages/CreateBlog'));
+const EditBlog = loadable(() => import('@/pages/EditBlog'));
 
 const routeList: RouteObject[] = [
   {
@@ -17,12 +19,18 @@ const routeList: RouteObject[] = [
       {
         path: ROUTES.HOME,
         element: <NonAuthRoute element={Home} />,
-        children: [],
       },
       {
         path: ROUTES.BLOG_DETAIL,
         element: <NonAuthRoute element={BlogDetail} />,
-        children: [],
+      },
+      {
+        path: ROUTES.EDIT_BLOG,
+        element: <NonAuthRoute element={EditBlog} />,
+      },
+      {
+        path: ROUTES.CREATE_BLOG,
+        element: <NonAuthRoute element={CreateBlog} />,
       },
     ],
   },

@@ -18,6 +18,10 @@ export const BlogService = createApi({
         if (error) return [];
         return ['BLOG'];
       },
+      transformResponse: (response: any) => {
+        if (Array.isArray(response)) return response;
+        return response.json();
+      },
     }),
     getBlogById: builder.query<Blog, string /* blog id */>({
       query: (blogId) => ({
@@ -27,11 +31,14 @@ export const BlogService = createApi({
         if (error) return [];
         return [{ type: 'BLOG', id: arg }];
       },
+      transformResponse: (response: any) => {
+        return response.json();
+      },
     }),
     createBlog: builder.mutation<any, BaseBlog>({
       query: (body) => ({
         url: BASE_END_POINT,
-        method: 'Blog',
+        method: 'POST',
         body,
       }),
       invalidatesTags: (_, error) => {
@@ -58,4 +65,5 @@ export const {
   useUpdateBlogMutation,
   useGetListBlogsQuery,
   useGetBlogByIdQuery,
+  useLazyGetBlogByIdQuery,
 } = BlogService;

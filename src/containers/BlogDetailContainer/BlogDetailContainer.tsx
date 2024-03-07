@@ -3,6 +3,7 @@ import { useRouter } from '@/hooks';
 import { useGetBlogByIdQuery } from '@/services/blog.service';
 import React from 'react';
 import BlogDetailView from './components/BlogDetailView';
+import BlogDetailViewSkeleton from './components/BlogDetailViewSkeleton';
 
 const BlogDetailContainer = () => {
   const { query } = useRouter();
@@ -14,7 +15,7 @@ const BlogDetailContainer = () => {
     <DataView
       isLoading={isLoading}
       isError={isError}
-      Skeleton={<div>Loading...</div>}
+      Skeleton={<BlogDetailViewSkeleton />}
       View={<BlogDetailView blog={data!} />}
     />
   );

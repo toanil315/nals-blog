@@ -5,7 +5,25 @@
   "contact": "Contact",
   "follow": "Follow",
   "signIn": "Sign in",
-  "getStarted": "Get started",
+  "getStarted": "Create Blog",
   "postBy": "Blog is posted by",
-  "publishAt": "Publish at"
+  "publishAt": "Publish at",
+  "createBlog": "Create Blog",
+  "editBlog": "Edit Blog",
+  "form": {
+    "blog": {
+      "title": "Title",
+      "titlePlaceholder": "Enter title",
+      "content": "Description",
+      "contentPlaceholder": "Enter description",
+      "body": "Body",
+      "bodyPlaceholder": "Enter body",
+      "image": "Banner Image",
+      "imagePlaceholder": "Enter blog banner",
+      "publish": "Publish"
+    },
+    "validation": {
+      "required": "This field is required!"
+    }
+  }
 }

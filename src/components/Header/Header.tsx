@@ -1,3 +1,4 @@
+import { ROUTES } from '@/constants';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -25,10 +26,11 @@ export default function Header() {
           </div>
         </div>
         <div className='flex items-center space-x-4 font-semibold text-green-500'>
-          <h3>{t('signIn')}</h3>
-          <h3 className='cursor-pointer rounded-full border border-green-500 px-4 py-1'>
-            {t('getStarted')}
-          </h3>
+          <Link to={ROUTES.CREATE_BLOG}>
+            <h3 className='cursor-pointer rounded-full border !border-green-500 px-4 py-2'>
+              {t('getStarted')}
+            </h3>
+          </Link>
         </div>
       </div>
     </header>
