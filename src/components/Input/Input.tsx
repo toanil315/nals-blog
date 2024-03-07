@@ -5,13 +5,15 @@ import { Label } from '../Label';
 import { ErrorMessage } from '../ErrorMessage';
 
 export interface InputProps {
-  label: string;
+  label?: string;
   name: string;
   placeholder: string;
   required?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
   error?: FieldError;
+  size?: 'sm' | 'normal' | 'lg';
+  className?: string;
 }
 
 const Input = ({ label, error, required, ...inputProps }: InputProps) => {

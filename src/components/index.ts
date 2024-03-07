@@ -5,3 +5,4 @@ export * from './DataView';
 export * from './icons';
 export * from './Input';
 export { default as Form } from './Form';
+export * from './Pagination';

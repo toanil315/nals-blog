@@ -1,3 +1,40 @@
 {
-  "helloWorld": "Xin chào"
+  "intro": "is a place to write, read, and connect",
+  "description": "It's easy and free to Blog your any thinking on any topic and connect with millions of readers",
+  "about": "About",
+  "contact": "Contact",
+  "follow": "Follow",
+  "signIn": "Sign in",
+  "getStarted": "Create Blog",
+  "postBy": "Blog is posted by",
+  "publishAt": "Publish at",
+  "createBlog": "Create Blog",
+  "editBlog": "Edit Blog",
+  "form": {
+    "blog": {
+      "title": "Title",
+      "titlePlaceholder": "Enter title",
+      "content": "Description",
+      "contentPlaceholder": "Enter description",
+      "body": "Body",
+      "bodyPlaceholder": "Enter body",
+      "image": "Banner Image",
+      "imagePlaceholder": "Enter blog banner",
+      "publish": "Publish",
+      "createSuccess": "Blog is created successfully.",
+      "updateSuccess": "Blog is updated successfully.",
+      "fail": "Something went wrong, please try again!"
+    },
+    "validation": {
+      "required": "This field is required!"
+    }
+  },
+  "viewBlogNow": "View Blog Now",
+  "close": "Close",
+  "search": "Search...",
+  "sortOrder": {
+    "asc": "Oldest",
+    "desc": "Newest"
+  },
+  "searchFor": "Search results for"
 }

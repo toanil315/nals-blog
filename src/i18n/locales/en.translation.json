@@ -30,5 +30,11 @@
     }
   },
   "viewBlogNow": "View Blog Now",
-  "close": "Close"
+  "close": "Close",
+  "search": "Search...",
+  "sortOrder": {
+    "asc": "Oldest",
+    "desc": "Newest"
+  },
+  "searchFor": "Search results for"
 }

@@ -2,14 +2,15 @@ import { ROUTES } from '@/constants';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import SearchBlog from './SearchBlog';
 
 export default function Header() {
   const { t } = useTranslation();
 
   return (
     <header className=' sticky top-0 z-50 bg-white shadow-md'>
-      <div className='mx-auto flex max-w-7xl items-center justify-between px-4 py-6'>
-        <div className='flex items-center'>
+      <div className='mx-auto max-w-7xl flex flex-wrap items-center justify-between px-4 py-6'>
+        <div className='flex items-center gap-4'>
           <Link to='/'>
             <img
               className='h-6  cursor-pointer object-contain'
@@ -17,12 +18,8 @@ export default function Header() {
               alt='logo'
             />
           </Link>
-          <div className='ml-4 hidden items-center space-x-6 font-semibold md:flex lg:ml-8'>
-            <h3>{t('about')}</h3>
-            <h3>{t('contact')}</h3>
-            <h3 className='cursor-pointer rounded-full bg-green-500 px-4 py-1 text-white'>
-              {t('follow')}
-            </h3>
+          <div className='hidden md:block'>
+            <SearchBlog />
           </div>
         </div>
         <div className='flex items-center space-x-4 font-semibold text-green-500'>
@@ -31,6 +28,9 @@ export default function Header() {
               {t('getStarted')}
             </h3>
           </Link>
+        </div>
+        <div className='block md:hidden w-full mt-3'>
+          <SearchBlog />
         </div>
       </div>
     </header>

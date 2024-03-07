@@ -14,13 +14,25 @@ export const BlogService = createApi({
         url: BASE_END_POINT,
         params,
       }),
-      providesTags: (_, error) => {
-        if (error) return [];
-        return ['BLOG'];
-      },
+      providesTags: [{ type: 'BLOG' }],
       transformResponse: (response: any) => {
         if (Array.isArray(response)) return response;
         return response.json();
+      },
+    }),
+    // Because provided API get list blogs does not return pagination info like total elements, total pages, etc...
+    // so we need to call api list without any params except search to get total blogs
+    // and then return total blogs by count the length of the array.
+    getTotalBlogs: builder.query<number, string /* search value */>({
+      query: (search) => ({
+        url: BASE_END_POINT,
+        params: { search },
+      }),
+      providesTags: [{ type: 'BLOG' }],
+      transformResponse: async (response: any) => {
+        if (Array.isArray(response)) return response.length;
+        const result = await response.json();
+        return result.length;
       },
     }),
     getBlogById: builder.query<Blog, string /* blog id */>({
@@ -72,4 +84,5 @@ export const {
   useGetListBlogsQuery,
   useGetBlogByIdQuery,
   useLazyGetBlogByIdQuery,
+  useGetTotalBlogsQuery,
 } = BlogService;

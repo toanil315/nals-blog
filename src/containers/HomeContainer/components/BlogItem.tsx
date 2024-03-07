@@ -29,7 +29,7 @@ export default function BlogItem({ blog }: Props) {
             </h3>
           </Link>
           <div className='flex items-center justify-between'>
-            <p className='line-clamp-3 lg:w-4/5'>{blog.content}</p>
+            <p className='line-clamp-3 lg:w-[90%]'>{blog.content}</p>
           </div>
         </div>
         <p className='flex items-center gap-2'>
