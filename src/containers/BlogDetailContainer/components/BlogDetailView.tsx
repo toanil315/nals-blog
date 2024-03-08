@@ -43,7 +43,7 @@ const BlogDetailView = ({ blog }: Props) => {
               Dang Cong Toan
             </a>
             <span className='text-sm text-gray-400'>
-              {t('publishAt')} {date.getDate()}/{date.getMonth()}/{date.getFullYear()}
+              {t('publishAt')} {date.getDate()}/{date.getMonth() + 1}/{date.getFullYear()}
             </span>
           </div>
         </div>
