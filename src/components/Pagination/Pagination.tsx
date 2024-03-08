@@ -29,17 +29,29 @@ const Pagination = (paginationProps: Props) => {
   return (
     <StyledRsPagination>
       <PaginationItem>
-        <PaginationLink first />
+        <PaginationLink
+          first
+          onClick={() => onPageChange(1)}
+        />
       </PaginationItem>
       <PaginationItem>
-        <PaginationLink previous />
+        <PaginationLink
+          previous
+          onClick={() => onPageChange(currentPage - 1)}
+        />
       </PaginationItem>
       {renderPaginationItems()}
       <PaginationItem>
-        <PaginationLink next />
+        <PaginationLink
+          next
+          onClick={() => onPageChange(currentPage + 1)}
+        />
       </PaginationItem>
       <PaginationItem>
-        <PaginationLink last />
+        <PaginationLink
+          last
+          onClick={() => onPageChange(totalPages)}
+        />
       </PaginationItem>
     </StyledRsPagination>
   );

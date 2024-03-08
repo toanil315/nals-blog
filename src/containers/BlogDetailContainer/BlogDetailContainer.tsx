@@ -7,7 +7,7 @@ import BlogDetailViewSkeleton from './components/BlogDetailViewSkeleton';
 
 const BlogDetailContainer = () => {
   const { query } = useRouter();
-  const { data, isLoading, isError } = useGetBlogByIdQuery(query.blogId as string, {
+  const { data, isLoading, isError, error } = useGetBlogByIdQuery(query.blogId as string, {
     skip: !query.blogId,
   });
 
@@ -15,6 +15,7 @@ const BlogDetailContainer = () => {
     <DataView
       isLoading={isLoading}
       isError={isError}
+      error={error}
       Skeleton={<BlogDetailViewSkeleton />}
       View={<BlogDetailView blog={data!} />}
     />

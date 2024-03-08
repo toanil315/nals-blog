@@ -8,7 +8,8 @@ const rootReducer = combineReducers({
 export function makeStore() {
   return configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(BlogService.middleware),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({ serializableCheck: false }).concat(BlogService.middleware),
   });
 }
 

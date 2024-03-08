@@ -32,7 +32,7 @@ const HomeContainer = () => {
     page = getInitialListParams('page'),
     limit = getInitialListParams('limit'),
   } = query;
-  const { data, isLoading, isFetching, isError } = useGetListBlogsQuery({
+  const { data, isLoading, isFetching, isError, error } = useGetListBlogsQuery({
     page: page as number,
     limit: limit as number,
     sortBy: 'createdAt',
@@ -60,6 +60,7 @@ const HomeContainer = () => {
         <DataView
           isLoading={isLoading || isFetching}
           isError={isError}
+          error={error}
           Skeleton={<BlogListSkeleton />}
           View={<BlogList blogs={Array.isArray(data) ? data : []} />}
         />

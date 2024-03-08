@@ -5,7 +5,7 @@ export default function Banner() {
   const { t } = useTranslation();
 
   return (
-    <div className='mx-auto border-y border-black bg-yellow-400 px-4 2xl:max-w-7xl'>
+    <div className='mx-auto border-y border-black bg-green-600 px-4 2xl:max-w-7xl'>
       <div className='max-w-7xl mx-auto flex items-center justify-between'>
         <div className='py-8 lg:py-0'>
           <h1 className='max-w-xl pb-4 font-serif text-5xl font-bold leading-tight lg:max-w-2xl lg:text-6xl lg:leading-tight'>
